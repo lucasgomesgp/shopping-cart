@@ -1,4 +1,3 @@
-// import imgCart from "../../assets/shopping_cart_sm.svg"
 import styles from "./styles.module.scss";
 
 export default function Item({ srcImg, imgAlt, title, priceDanger, priceCurrent }) {

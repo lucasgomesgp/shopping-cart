@@ -1,5 +1,25 @@
 .items{
     display: flex;
     align-items: center;
-    overflow-x: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.circles{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+    gap: 1rem;
+    .circle{
+        width: 15px;
+        height: 15px;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 1rem;
+
+        &:hover{
+            background-color: rgba(0, 0, 0, 1);
+            cursor: pointer;
+        }
+    }
 }
