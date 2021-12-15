@@ -1,16 +1,32 @@
 import Item from "../../components/Item";
 import styles from "./styles.module.scss";
 import { listAllBoots } from "../../utils/boots";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Shop() {
     const allShoes = useRef(null);
 
+    useEffect(() => {
+        moveInitial();
+    });
+
     function moveInitial() {
         allShoes.current.scrollLeft = 0;
     }
-    function moveRight() {
-        allShoes.current.scrollLeft += allShoes.current.clientWidth;
+    function moveSecond() {
+        if (allShoes.current.scrollLeft === 1826) {
+            allShoes.current.scrollLeft = 913;
+        }else{
+            allShoes.current.scrollLeft = 913;
+        }
+    }
+    function moveLast() {
+        if (allShoes.current.scrollLeft === 0) {
+            allShoes.current.scrollLeft = 1826;
+        }
+        if ((allShoes.current.scrollLeft >= 913) && (allShoes.current.scrollLeft !== 1826)) {
+            allShoes.current.scrollLeft += allShoes.current.clientWidth;
+        }
 
     }
     return (
@@ -22,8 +38,8 @@ export default function Shop() {
             </main>
             <div className={styles.circles}>
                 <span className={styles.circle} onClick={moveInitial}></span>
-                <span className={styles.circle} onClick={moveRight}></span>
-                <span className={styles.circle} onClick={moveRight}></span>
+                <span className={styles.circle} onClick={moveSecond}></span>
+                <span className={styles.circle} onClick={moveLast}></span>
             </div>
         </>
     );
