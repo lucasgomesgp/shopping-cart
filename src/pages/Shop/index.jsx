@@ -1,11 +1,12 @@
 import Item from "../../components/Item";
 import styles from "./styles.module.scss";
+import cartImg from "../../assets/shopping_cart_bg.svg"
 import { listAllBoots } from "../../utils/boots";
 import { useEffect, useRef } from "react";
 
 export default function Shop() {
     const allShoes = useRef(null);
-
+    const cartRef = useRef(null);
     useEffect(() => {
         moveInitial();
     });
@@ -16,7 +17,7 @@ export default function Shop() {
     function moveSecond() {
         if (allShoes.current.scrollLeft === 1826) {
             allShoes.current.scrollLeft = 913;
-        }else{
+        } else {
             allShoes.current.scrollLeft = 913;
         }
     }
@@ -29,6 +30,13 @@ export default function Shop() {
         }
 
     }
+
+    function openWidthCart() {
+            cartRef.current.style.width = "40%";
+    }
+    function closeWidthCart(){
+        cartRef.current.style.width = 0;
+    }
     return (
         <>
             <main className={styles.items} ref={allShoes}>
@@ -40,6 +48,19 @@ export default function Shop() {
                 <span className={styles.circle} onClick={moveInitial}></span>
                 <span className={styles.circle} onClick={moveSecond}></span>
                 <span className={styles.circle} onClick={moveLast}></span>
+            </div>
+            <div className={styles.cartCurrent}>
+                <button className={styles.cartBtn} onClick={openWidthCart}>
+                    <img src={cartImg} alt="Carrinho de compras" />
+                </button>
+                <div className={styles.cartArea} ref={cartRef}>
+                    <div className={styles.btnClose} onClick={closeWidthCart}>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <h3 className={styles.cartTitle}>Bem vindo ao carrinho de compras!</h3>
+                    <p className={styles.cartSubTitle}>Você tem x sapato(s) selecionados.</p>
+                </div>
             </div>
         </>
     );
