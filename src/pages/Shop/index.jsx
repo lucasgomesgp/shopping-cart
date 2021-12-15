@@ -1,8 +1,10 @@
+import { useEffect, useRef } from "react";
 import Item from "../../components/Item";
 import styles from "./styles.module.scss";
-import cartImg from "../../assets/shopping_cart_bg.svg"
+import cartImg from "../../assets/shopping_cart_bg.svg";
+import doneImg from "../../assets/done.svg";
 import { listAllBoots } from "../../utils/boots";
-import { useEffect, useRef } from "react";
+import SelectedItem from "../../components/SelectedItem";
 
 export default function Shop() {
     const allShoes = useRef(null);
@@ -32,9 +34,9 @@ export default function Shop() {
     }
 
     function openWidthCart() {
-            cartRef.current.style.width = "40%";
+        cartRef.current.style.width = "40%";
     }
-    function closeWidthCart(){
+    function closeWidthCart() {
         cartRef.current.style.width = 0;
     }
     return (
@@ -60,6 +62,13 @@ export default function Shop() {
                     </div>
                     <h3 className={styles.cartTitle}>Bem vindo ao carrinho de compras!</h3>
                     <p className={styles.cartSubTitle}>Você tem x sapato(s) selecionados.</p>
+                    <div className={styles.listShoes}>
+                        <SelectedItem />
+                        
+                        <button className={styles.sendSale}>
+                            <img src={doneImg} alt="Icone de finalização" />
+                        </button>
+                    </div>
                 </div>
             </div>
         </>

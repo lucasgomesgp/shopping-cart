@@ -1,0 +1,13 @@
+.itemCart{
+    background-color: #ffffff;
+    margin-top: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    
+    img{
+        max-width: 180px;
+    }
+}
